@@ -134,21 +134,33 @@ Invoke-RestMethod -Uri 'http://localhost:3000/bfhl' -Method Post -ContentType 'a
 
 Sample payloads are available in `backend/sample-test-cases.json`.
 
-## Deployment Notes
+## Vercel Deployment (Single Project)
 
-### Backend
+This repository is configured to deploy both frontend and API together in one Vercel project.
 
-- Deploy `backend/` on any Node.js platform (Render, Railway, etc.)
-- Configure environment variables:
+### Files used for Vercel
+
+- `vercel.json` at repo root
+- `backend/api/bfhl.js` as the serverless API entry
+
+### Deploy steps
+
+1. Import this GitHub repository into Vercel.
+2. In project settings, keep:
+  - Root Directory: project root (do not set `backend` or `frontend`)
+  - Framework Preset: Other
+3. Add environment variables:
   - `USER_ID`
   - `EMAIL_ID`
   - `COLLEGE_ROLL_NUMBER`
-  - `PORT`
+4. Click Deploy.
 
-### Frontend
+### Routes after deploy
 
-- Deploy `frontend/` as static site (Netlify, Vercel static, GitHub Pages)
-- Update `API_BASE_URL` in `frontend/app.js` to deployed backend URL
+- Frontend: `/`
+- API: `/bfhl`
+
+Frontend calls `/bfhl` directly on Vercel domain, while local development still uses `http://localhost:3000` automatically.
 
 ## Performance
 
