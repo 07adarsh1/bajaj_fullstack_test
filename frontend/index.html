@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BFHL Hierarchy Builder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>BFHL Hierarchy Builder</h1>
+      <p class="subtitle">Enter one edge per line in X-&gt;Y format, or paste full JSON like { "data": ["A-&gt;B"] }.</p>
+
+      <label for="edgeInput">Node List</label>
+      <textarea id="edgeInput" rows="10" placeholder="A->B&#10;A->C&#10;B->D&#10;&#10;or&#10;{&#10;  &quot;data&quot;: [&quot;A->B&quot;, &quot;A->C&quot;]&#10;}"></textarea>
+
+      <div class="actions">
+        <button id="submitBtn" type="button">Submit</button>
+      </div>
+
+      <p id="statusMessage" class="status"></p>
+
+      <section>
+        <h2>API Response</h2>
+        <pre id="responseOutput">{}</pre>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

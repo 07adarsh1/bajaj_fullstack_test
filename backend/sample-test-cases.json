@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Simple tree",
+    "request": {
+      "data": ["A->B", "A->C", "B->D"]
+    }
+  },
+  {
+    "name": "Duplicates and invalid entries",
+    "request": {
+      "data": ["A->B", "A->B", "A->b", "C=>D", "", "E->E", " F->G "]
+    }
+  },
+  {
+    "name": "Multiple parents (first parent retained)",
+    "request": {
+      "data": ["A->B", "C->B", "B->D"]
+    }
+  },
+  {
+    "name": "Cycle",
+    "request": {
+      "data": ["X->Y", "Y->Z", "Z->X"]
+    }
+  },
+  {
+    "name": "Mixed forest and cycle",
+    "request": {
+      "data": ["A->B", "B->C", "M->N", "N->M", "P->Q", "Q->R"]
+    }
+  }
+]
