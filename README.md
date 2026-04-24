@@ -134,33 +134,43 @@ Invoke-RestMethod -Uri 'http://localhost:3000/bfhl' -Method Post -ContentType 'a
 
 Sample payloads are available in `backend/sample-test-cases.json`.
 
-## Vercel Deployment (Single Project)
+## Deployment (Frontend on Vercel + API on Render)
 
-This repository is configured to deploy both frontend and API together in one Vercel project.
+### 1) Deploy backend on Render
 
-### Files used for Vercel
+1. Create a new Web Service from this repository.
+2. Set Root Directory to `backend`.
+3. Set Build Command to `npm install`.
+4. Set Start Command to `npm run start`.
+5. Add environment variables:
+   - `USER_ID`
+   - `EMAIL_ID`
+   - `COLLEGE_ROLL_NUMBER`
+6. Deploy and copy your Render service URL:
+  - `https://adarsh-bfhl.onrender.com`
 
-- `vercel.json` at repo root
-- `backend/api/bfhl.js` as the serverless API entry
+### 2) Configure frontend API URL
 
-### Deploy steps
+In `frontend/app.js`, set:
 
-1. Import this GitHub repository into Vercel.
-2. In project settings, keep:
-  - Root Directory: project root (do not set `backend` or `frontend`)
-  - Framework Preset: Other
-3. Add environment variables:
-  - `USER_ID`
-  - `EMAIL_ID`
-  - `COLLEGE_ROLL_NUMBER`
-4. Click Deploy.
+- `RENDER_API_BASE_URL` to `https://adarsh-bfhl.onrender.com`
 
-### Routes after deploy
+The frontend is already configured to use:
 
-- Frontend: `/`
-- API: `/bfhl`
+- `http://localhost:3000` during local development
+- Render URL in production
 
-Frontend calls `/bfhl` directly on Vercel domain, while local development still uses `http://localhost:3000` automatically.
+### 3) Deploy frontend on Vercel
+
+1. Import this repository in Vercel.
+2. Set Root Directory to `frontend`.
+3. Framework Preset: `Other`.
+4. Deploy.
+
+After deploy:
+
+- Frontend URL: your Vercel domain
+- API URL: your Render domain
 
 ## Performance
 
